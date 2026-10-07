@@ -100,7 +100,8 @@ module.exports = grammar({
                 optional(seq(":", $.type)),
                 optional(seq("=", $.expression)),
             ),
-        return_statement: ($) => seq("return", optional($.expression)),
+        return_statement: ($) =>
+            prec.right(seq("return", optional($.expression))),
         expression_statement: ($) => $.expression,
         expression: ($) =>
             choice(
