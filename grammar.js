@@ -68,11 +68,17 @@ module.exports = grammar({
 
     inner_attribute: $ => seq('#', '!', '[', $.identifier, ']'),
 
+    // `#[packed]`, `#[align(16)]`, `#[getter, setter]`
     attribute: $ => seq(
       '#', '[',
-      field('name', $.identifier),
-      optional(seq('(', $.integer_literal, ')')),
+      $.attribute_item,
+      repeat(seq(',', $.attribute_item)),
       ']',
+    ),
+
+    attribute_item: $ => seq(
+      field('name', $.identifier),
+      optional(seq('(', field('argument', $.integer_literal), ')')),
     ),
 
     // ---- items ---------------------------------------------------------

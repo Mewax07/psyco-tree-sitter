@@ -114,6 +114,35 @@
           "value": "["
         },
         {
+          "type": "SYMBOL",
+          "name": "attribute_item"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "attribute_item"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "attribute_item": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "FIELD",
           "name": "name",
           "content": {
@@ -132,8 +161,12 @@
                   "value": "("
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "integer_literal"
+                  "type": "FIELD",
+                  "name": "argument",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "integer_literal"
+                  }
                 },
                 {
                   "type": "STRING",
@@ -145,10 +178,6 @@
               "type": "BLANK"
             }
           ]
-        },
-        {
-          "type": "STRING",
-          "value": "]"
         }
       ]
     },
